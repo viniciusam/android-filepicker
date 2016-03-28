@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FilePicker</string>
+
+    <string name="parent_desc">Back to Parent</string>
+    <string name="pick">Pick</string>
+    <string name="cancel">Cancel</string>
+
+</resources>
