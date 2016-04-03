@@ -133,15 +133,18 @@ public class FileListFragment extends Fragment implements FileInfoAdapter.ClickH
         @Override
         protected List<FileInfo> doInBackground(Void... params) {
             ArrayList<FileInfo> fileList = new ArrayList<>();
-            File currentFile = new File(mCurrentFolder);
+            File currentFolder = new File(mCurrentFolder);
 
-            for (File file : currentFile.listFiles()) {
-                fileList.add(new FileInfo(file));
+            File fileArray[] = currentFolder.listFiles();
+            if (fileArray != null) {
+                for (File file : fileArray) {
+                    fileList.add(new FileInfo(file));
+                }
+                Collections.sort(fileList);
             }
-            Collections.sort(fileList);
 
             if (mShowParentLink) {
-                FileInfo parentLink = FileInfo.newParentLink(currentFile.getParentFile());
+                FileInfo parentLink = FileInfo.newParentLink(currentFolder.getParentFile());
                 fileList.add(0, parentLink);
             }
 
